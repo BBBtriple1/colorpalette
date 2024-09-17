@@ -5,17 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kleurenschema Generator</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome voor iconen -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="language-switcher">
-        <button id="languageBtn">EN</button>
-    </div>
     <div class="controls">
+        <div class="language-switcher">
+            <button id="languageBtn">EN</button>
+        </div>
         <h1 id="title">Kleurenschema Generator</h1>
-        <input type="color" id="baseColor" value="#3498db">
-        <button id="generateBtn">Genereer Palet</button>
+        <div class="input-group">
+            <input type="color" id="baseColor" value="#3498db">
+            <button id="generateBtn">Genereer Palet</button>
+        </div>
     </div>
-    <div id="palette" class="palette"></div>
+    <div id="palette" class="palette">
+        <!-- Kleurkolommen worden hier gegenereerd -->
+    </div>
     <div class="footer">
         <p>Powered by <a href="https://www.bbbtriple1.com" target="_blank">BBBtriple1 Network</a></p>
     </div>
