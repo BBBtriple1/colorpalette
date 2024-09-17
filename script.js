@@ -35,10 +35,25 @@ function generatePalette() {
         colorColumn.className = 'color-column';
         colorColumn.style.backgroundColor = color;
 
+        // Iconen
+        const iconBar = document.createElement('div');
+        iconBar.className = 'icon-bar';
+        const lockButton = document.createElement('button');
+        lockButton.innerHTML = '<i class="fas fa-lock-open"></i>';
+        const saveButton = document.createElement('button');
+        saveButton.innerHTML = '<i class="fas fa-save"></i>';
+        const reloadButton = document.createElement('button');
+        reloadButton.innerHTML = '<i class="fas fa-sync-alt"></i>';
+        iconBar.appendChild(lockButton);
+        iconBar.appendChild(saveButton);
+        iconBar.appendChild(reloadButton);
+
+        // Kleurinformatie
         const colorInfo = document.createElement('div');
         colorInfo.className = 'color-info';
-        colorInfo.textContent = color.toUpperCase();
+        colorInfo.innerHTML = `${color.toUpperCase()}<br>${getColorName(color)}`;
 
+        colorColumn.appendChild(iconBar);
         colorColumn.appendChild(colorInfo);
         palette.appendChild(colorColumn);
     });
@@ -135,4 +150,28 @@ function HSLToHex(h, s, l) {
         ("0" + r.toString(16)).slice(-2) +
         ("0" + g.toString(16)).slice(-2) +
         ("0" + b.toString(16)).slice(-2);
+}
+
+function getColorName(hex) {
+    // Eenvoudige benadering van kleurnamen op basis van hue
+    const hsl = hexToHSL(hex);
+    const hue = hsl.h;
+
+    let colorName = '';
+
+    if (hue >= 0 && hue < 15) colorName = 'Rood';
+    else if (hue >= 15 && hue < 45) colorName = 'Oranje';
+    else if (hue >= 45 && hue < 75) colorName = 'Geel';
+    else if (hue >= 75 && hue < 105) colorName = 'Limoen';
+    else if (hue >= 105 && hue < 135) colorName = 'Groen';
+    else if (hue >= 135 && hue < 165) colorName = 'Turkoois';
+    else if (hue >= 165 && hue < 195) colorName = 'Cyaan';
+    else if (hue >= 195 && hue < 225) colorName = 'Hemelsblauw';
+    else if (hue >= 225 && hue < 255) colorName = 'Blauw';
+    else if (hue >= 255 && hue < 285) colorName = 'Paars';
+    else if (hue >= 285 && hue < 315) colorName = 'Magenta';
+    else if (hue >= 315 && hue < 345) colorName = 'Roze';
+    else if (hue >= 345 && hue <= 360) colorName = 'Rood';
+
+    return colorName;
 }
